@@ -20,6 +20,7 @@ except:
 
 import time
 import random
+import os.path
 import supybot.ircmsgs as ircmsgs
 import supybot.schedule as schedule
 
@@ -39,7 +40,7 @@ class Cats(callbacks.Plugin):
         self.catsplaying = False
         self.players = {}
 
-        gamecards = open('lists', 'r').read()
+        gamecards = open(os.path.join(os.path.dirname(__file__), 'lists')) .read()
         self.gamecards = gamecards.split('=^-^=')
 
     def cats(self, irc, msg, args):
