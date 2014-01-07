@@ -75,8 +75,6 @@ class Cats(callbacks.Plugin):
                             irc.sendMsg(ircmsgs.privmsg(x, y))
                         irc.sendMsg(ircmsgs.privmsg(x, 'Your answer must match the category and start with %s. Reply in format: # answer' % self.letter))
 
-                    def end():
-                        self.gameEnd(irc)
                     schedule.addEvent(gameEnd, time.time() + 90)
 
                 def gameEnd():
