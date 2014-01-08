@@ -65,7 +65,7 @@ class Cats(callbacks.Plugin):
                     schedule.addEvent(chooseLetter, time.time() + 5)
 
                 def chooseLetter():
-                    self.letter = random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+                    self.letter = random.choice('ABCDEFGHIJKLMNOPRSTW')
                     irc.reply('The letter for this round is... %s' % self.letter, prefixNick=False) 
                     irc.reply('You have 90 seconds starting right meow!', prefixNick=False)
                     self.catsplaying = True
