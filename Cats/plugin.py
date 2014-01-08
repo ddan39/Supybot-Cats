@@ -75,7 +75,19 @@ class Cats(callbacks.Plugin):
                             irc.sendMsg(ircmsgs.privmsg(x, y))
                         irc.sendMsg(ircmsgs.privmsg(x, 'Your answer must match the category and start with %s. Reply in format: # answer' % self.letter))
 
+                    schedule.addEvent(warningOne, time.time() + 30)
+                    schedule.addEvent(warningTwo, time.time() + 60)
+                    schedule.addEvent(warningThree, time.time() + 80)
                     schedule.addEvent(gameEnd, time.time() + 90)
+
+                def warningOne():
+                    irc.reply('One minute remaining!', prefixNick=False)
+
+                def warningTwo():
+                    irc.reply('30 seconds left!', prefixNick=False)
+
+                def warningThree():
+                    irc.remply('10 seconds! Hurry!', prefixNick=False)
 
                 def gameEnd():
                     self.catsrunning = False
@@ -91,7 +103,7 @@ class Cats(callbacks.Plugin):
                     for i in xrange(1,13):
                         r = '%-*s (%s)' % (m, self.gamecard[i], ', '.join(['%s:%-*s' % (k, v['m'], v.get(i, '-')) for k,v in self.players.iteritems()]))
                         answers = [x[i] for x in self.players.itervalues() if i in x]
-                        r += ' Points for '
+                        r += ' +1 '
                         w = []
                         for n,x in self.players.iteritems():
                             if i in x and answers.count(x[i]) == 1:
