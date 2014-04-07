@@ -33,7 +33,7 @@ class Cats(callbacks.Plugin):
         self.__parent = super(Cats, self)
         self.__parent.__init__(irc)
 
-        self.gamechan = '#games'
+        self.gamechan = '#ipt.games'
 
         self.catsrunning = False
         self.catsjoining = False
